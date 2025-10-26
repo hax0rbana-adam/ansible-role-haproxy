@@ -26,7 +26,7 @@
     name: "haproxy={{ haproxy_version }}.*"
     state: "{{ haproxy_package_state }}"
     update_cache: true
-  when: haproxy_version
+  when: haproxy_version is not none and haproxy_version | length > 0
 
 - name: Install the version of HAProxy from apt
   ansible.builtin.apt:
